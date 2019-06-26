@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<suite name="微服务后台管理系统测试套件">
+
+    <test name="微服务后台管理系统测试用例">
+        <classes>
+            <class name="com.tester.cases.LoginTest">
+                <methods>
+                    <include name="loginTrue"/>
+                    <include name="loginFalse"/>
+                </methods>
+            </class>
+            <class name="com.tester.cases.AddBrandTest" >
+                <methods>
+                    <include name="addBrand"/>
+                    <include name="addExistBrandCode"/>
+                </methods>
+            </class>
+            <class name="com.tester.cases.GetBrandInfoListTest" >
+                <methods>
+                    <include name="getBrandListInfo"/>
+                </methods>
+            </class>
+            <class name="com.tester.cases.UpdateBrandInfoTest" >
+                <methods>
+                    <include name="updateBrandInfo"/>
+                </methods>
+            </class>
+            <class name="com.tester.cases.DeleteBrandInfoTest" >
+                <methods>
+                    <include name="deleteBrand"/>
+                </methods>
+            </class>
+        </classes>
+
+    </test>
+
+    <listeners>
+        <listener class-name="com.tester.config.ExtentTestNGIReporterListener" />
+    </listeners>
+
+</suite>

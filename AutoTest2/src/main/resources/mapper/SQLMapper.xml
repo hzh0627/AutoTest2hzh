@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper,如果有多个mapper文件，这个必须唯一 -->
+<mapper namespace="com.tester.model">
+
+    <!--获取登陆接口case-->
+    <!--<select id="loginCase" parameterType="Integer"  resultType="com.tester.model.LoginCase">-->
+        <!--select * from loginCase-->
+        <!--where id = #{id};-->
+    <!--</select>-->
+    <!--添加用户接口case-->
+    <!--<select id="addUserCase" parameterType="Integer" resultType="com.tester.model.AddUserCase">-->
+        <!--select * from addUserCase where id=#{id};-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;获取用户信息case&ndash;&gt;-->
+    <!--<select id="getUserInfoCase" parameterType="Integer" resultType="com.tester.model.GetUserInfoCase">-->
+        <!--&lt;!&ndash; SQL语句 &ndash;&gt;-->
+        <!--select * from getUserInfoCase where id=#{id};-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;获取用户列表case&ndash;&gt;-->
+    <!--<select id="getUserListCase" parameterType="Integer" resultType="com.tester.model.GetUserListCase">-->
+        <!--&lt;!&ndash; SQL语句 &ndash;&gt;-->
+        <!--select * from getUserListCase where id=#{id};-->
+    <!--</select>-->
+
+    <!--&lt;!&ndash;更新/删除用户信息case&ndash;&gt;-->
+    <!--<select id="updateUserInfoCase" parameterType="Integer" resultType="com.tester.model.UpdateUserInfoCase">-->
+        <!--select * from updateUserInfoCase where id = #{id};-->
+    <!--</select>-->
+
+
+    <!--添加品牌接口-->
+    <select id="addBrand" parameterType="com.tester.model.AddBrandCase" resultType="com.tester.model.Brand">
+        select id,brand_code as brandCode,brand_name as brandName from pti_brand where
+        brand_code=#{brandCode}
+        and brand_name=#{brandName};
+    </select>
+    <!--获取品牌列表-->
+    <select id="getBrandList" parameterType="com.tester.model.GetBrandListCase" resultType="com.tester.model.Brand">
+        <!-- SQL语句 -->
+        select id,brand_code as brandCode,brand_name as brandName,memo as memo from pti_brand
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null != brandCode and '' !=brandCode">
+                AND brand_code=#{brandCode}
+            </if>
+            <if test="null != memo and '' !=memo">
+                AND memo=#{memo}
+            </if>
+            <if test="null != brandName and '' !=brandName">
+                AND brand_name=#{brandName}
+            </if>
+            <if test="null != ids">
+                AND id in
+                <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+            </if>
+
+        </trim>
+        ;
+    </select>
+    <!--获取更新后的品牌数据-->
+    <select id="getUpdateBrandInfo" parameterType="com.tester.model.UpdateBrandInfoCase" resultType="com.tester.model.Brand">
+        select id,brand_code as brandCode,brand_name as brandName,memo as memo from pti_brand
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null != brandCode and '' !=brandCode">
+                AND brand_code=#{brandCode}
+            </if>
+            <if test="null != memo and '' !=memo">
+                AND memo=#{memo}
+            </if>
+            <if test="null != brandName and '' !=brandName">
+                AND brand_name=#{brandName}
+            </if>
+        </trim>
+        And id = #{id};
+    </select>
+    <!--删除品牌列表-->
+    <select id="deleteBrandInfo" parameterType="com.tester.model.DeleteBrandInfoCase" resultType="com.tester.model.Brand">
+        <!-- SQL语句 -->
+        select id,brand_code as brandCode,brand_name as brandName,memo as memo from pti_brand
+        <trim prefix="WHERE" prefixOverrides="and">
+            <if test="null != brandCode and '' !=brandCode">
+                AND brand_code=#{brandCode}
+            </if>
+            <if test="null != memo and '' !=memo">
+                AND memo=#{memo}
+            </if>
+            <if test="null != brandName and '' !=brandName">
+                AND brand_name=#{brandName}
+            </if>
+            <if test="null != ids">
+                AND id in
+                <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+
+        </trim>
+        ;
+    </select>
+</mapper>
