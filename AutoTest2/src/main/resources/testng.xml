@@ -11,12 +11,12 @@
                     <include name="loginFalse"/>
                 </methods>
             </class>
-            <!--<class name="com.tester.cases.AddBrandTest" >-->
-                <!--<methods>-->
-                    <!--<include name="addBrand"/>-->
+            <class name="com.tester.cases.AddBrandTest" >
+                <methods>
+                    <include name="addBrand"/>
                     <!--<include name="addExistBrandCode"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+                </methods>
+            </class>
             <!--<class name="com.tester.cases.GetBrandInfoListTest" >-->
                 <!--<methods>-->
                     <!--<include name="getBrandListInfo"/>-->

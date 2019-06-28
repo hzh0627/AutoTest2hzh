@@ -19,19 +19,18 @@ import java.util.Map;
 
 public class AddBrandTest {
     final static LogControler Log = LogControler.getLogger(AddBrandTest.class);
-    SqlSession session = null;
     @Test(dependsOnGroups = "loginTrue",description = "成功添加品牌接口")
     public void addBrand() throws IOException, InterruptedException {
-        session = DatabaseUtil.getSqlSession();
-     //  AddUserCase addUserCase = session.selectOne("addUserCase",1);
-        AddBrandCase addBrandCase =new AddBrandCase();
-        addBrandCase.setBrandCode("zuoshini21111");
-        addBrandCase.setBrandName("卓诗尼1111");
+        //从数据库读取用例
+        SqlSession sessionCase = DatabaseUtil.getSqlSessionCase();
+        AddBrandCase addBrandCase = sessionCase.selectOne("addBrandCase", 2);
+
         //下边的代码为写完接口的测试代码
         String result = getResult(addBrandCase);
-         //查询数据库看品牌是否添加成功
+        //查询数据库看品牌是否添加成功
+        SqlSession session = DatabaseUtil.getSqlSession();
         Thread.sleep(2000);
-        Brand brand = session.selectOne("addBrand",addBrandCase);
+        Brand brand = session.selectOne("addBrand", addBrandCase);
         System.out.println(brand.toString());
         //处理结果，就是判断返回结果是否符合预期
         Assert.assertEquals(brand.getId(),Integer.parseInt(result));
@@ -40,10 +39,8 @@ public class AddBrandTest {
 
     @Test(dependsOnGroups = "loginTrue",description = "添加重复编号的品牌接口")
     public void addExistBrandCode() throws IOException, InterruptedException {
-        session = DatabaseUtil.getSqlSession();
-        AddBrandCase addBrandCase =new AddBrandCase();
-        addBrandCase.setBrandCode("zuoshinihzh0000");
-        addBrandCase.setBrandName("卓诗尼000");
+        SqlSession sessionCase = DatabaseUtil.getSqlSessionCase();
+        AddBrandCase addBrandCase = sessionCase.selectOne("addBrandCase", 2);
         //下边的代码为写完接口的测试代码
         String result = getResult(addBrandCase);
         JSONObject resultJson = JSON.parseObject(result);

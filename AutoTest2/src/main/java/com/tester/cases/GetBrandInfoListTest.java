@@ -33,7 +33,7 @@ public class GetBrandInfoListTest {
         lists.add(38915L);
         lists.add(38916L);
         getBrandListCase.setIds(lists);
-        //getBrandListCase.setBrandName("卓诗尼");
+
         //下边为写完接口的代码
         JSONArray resultJson = getJsonResult(getBrandListCase);
         /**

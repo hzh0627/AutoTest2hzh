@@ -13,24 +13,8 @@ public class ConfigFile {
         String address = bundle.getString("test.url");
         String uri = "";
         String testUrl;
-        if(name == InterfaceName.GETUSERLIST){
-            uri = bundle.getString("getUserList.uri");
-
-        }
         if(name == InterfaceName.LOGIN){
             uri = bundle.getString("login.uri");
-        }
-
-        if(name == InterfaceName.UPDATEUSERINFO){
-            uri = bundle.getString("updateUserInfo.uri");
-        }
-
-        if(name == InterfaceName.GETUSERINFO){
-            uri = bundle.getString("getUserInfo.uri");
-        }
-
-        if(name == InterfaceName.ADDUSERINFO){
-            uri = bundle.getString("addUser.uri");
         }
         if(name == InterfaceName.ADDBRAND){
             uri = bundle.getString("addBrand.uri");
