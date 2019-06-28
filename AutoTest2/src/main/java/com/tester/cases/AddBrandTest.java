@@ -68,7 +68,7 @@ public class AddBrandTest {
         HttpResponse response = HttpRequestUtil.getResponse(TestConfig.addBrandUrl, addBrandCase, headers);
         //获取响应结果
         result = EntityUtils.toString(response.getEntity(), "utf-8");
-        //       int statusCode = HttpRequestUtil.getStatusCode(response);
+        //int statusCode = HttpRequestUtil.getStatusCode(response);
 //        Assert.assertEquals(statusCode,ErrorCodeConfig.RESPNSE_STATUS_CODE_200,"statusCode is not 200");
 //        Assert.assertNotNull(Integer.parseInt(result));
         Log.info("添加品牌用例执行结束=========");

@@ -10,16 +10,16 @@
                 <!-- 1.加载数据库驱动 -->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <!-- 2.数据库连接地址 -->
-                <property name="url" value="jdbc:mysql://192.168.1.171:3306/qs_iss_bas"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/autotestcase"/>
                 <!-- 数据库用户... -->
-                <property name="username" value="usr_iss"/>
+                <property name="username" value="root"/>
                 <!-- 数据库密码... -->
-                <property name="password" value="USR_ISS"/>
+                <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>
     <!-- 注册映射文件：java对象与数据库之间的xml文件路径！ -->
 <mappers>
-    <mapper resource="mapper/SQLMapper.xml"/>
+    <mapper resource="mapper/SQLMapperCase.xml"/>
 </mappers>
 </configuration>

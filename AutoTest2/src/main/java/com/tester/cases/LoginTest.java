@@ -7,12 +7,14 @@ import com.tester.log.LogControler;
 import com.tester.model.InterfaceName;
 import com.tester.model.LoginCase;
 import com.tester.utils.ConfigFile;
+import com.tester.utils.DatabaseUtil;
 import com.tester.utils.HttpRequestUtil;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.apache.ibatis.session.SqlSession;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,11 +27,7 @@ public class LoginTest {
     @BeforeTest(groups = "loginTrue",description = "测试准备工作,获取HttpClient对象")
     public void beforeTest(){
         TestConfig.defaultHttpClient = new DefaultHttpClient();
-        TestConfig.getUserInfoUrl = ConfigFile.getUrl(InterfaceName.GETUSERINFO);
-        TestConfig.getUserListUrl = ConfigFile.getUrl(InterfaceName.GETUSERLIST);
         TestConfig.loginUrl = ConfigFile.getUrl(InterfaceName.LOGIN);
-        TestConfig.updateUserInfoUrl = ConfigFile.getUrl(InterfaceName.UPDATEUSERINFO);
-        TestConfig.addUserUrl = ConfigFile.getUrl(InterfaceName.ADDUSERINFO);
         TestConfig.addBrandUrl = ConfigFile.getUrl(InterfaceName.ADDBRAND);
         TestConfig.getBrandListUrl = ConfigFile.getUrl(InterfaceName.GETBRANDLIST);
         TestConfig.updateBrandInfoUrl = ConfigFile.getUrl(InterfaceName.UPDATEBRANDINFO);
@@ -43,14 +41,10 @@ public class LoginTest {
     public void loginTrue() throws IOException {
         Log.info("开始执行用例...");
 
-      //  SqlSession session = DatabaseUtil.getSqlSession();
-      //  LoginCase loginCase = session.selectOne("loginCase",1);
-        LoginCase loginCase = new LoginCase();
-        loginCase.setUserName("QSCS001");
-        loginCase.setPassword("123456");
-        loginCase.setClient_id("issClient");
-        loginCase.setClient_secret("issClientSecret");
-        loginCase.setCompanyId(239);
+        SqlSession session = DatabaseUtil.getSqlSessionCase();
+        //从数据库读取用例
+        LoginCase loginCase = session.selectOne("loginCase",1);
+
 
         //下边的代码为写完接口的测试代码
         String result=HttpRequestUtil.getResultForPost2(TestConfig.loginUrl,loginCase);
@@ -74,14 +68,10 @@ public class LoginTest {
     @Test(description = "用户登陆失败接口")
     public void loginFalse() throws IOException {
         //涉及到数据库时用到以下两条代码
-        //SqlSession session = DatabaseUtil.getSqlSession();
-       // LoginCase loginCase = session.selectOne("loginCase",2);
-        LoginCase loginCase = new LoginCase();
-        loginCase.setUserName("QSCS001");
-        loginCase.setPassword("133");
-        loginCase.setClient_id("issClient");
-        loginCase.setClient_secret("issClientSecret");
-        loginCase.setCompanyId(239);
+        SqlSession session = DatabaseUtil.getSqlSessionCase();
+        //从数据库读取用例
+        LoginCase loginCase = session.selectOne("loginCase",2);
+
         System.out.println(loginCase.toString());
         System.out.println(TestConfig.loginUrl);
         //下边的代码为写完接口的测试代码

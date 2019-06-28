@@ -11,27 +11,27 @@
                     <include name="loginFalse"/>
                 </methods>
             </class>
-            <class name="com.tester.cases.AddBrandTest" >
-                <methods>
-                    <include name="addBrand"/>
-                    <include name="addExistBrandCode"/>
-                </methods>
-            </class>
-            <class name="com.tester.cases.GetBrandInfoListTest" >
-                <methods>
-                    <include name="getBrandListInfo"/>
-                </methods>
-            </class>
-            <class name="com.tester.cases.UpdateBrandInfoTest" >
-                <methods>
-                    <include name="updateBrandInfo"/>
-                </methods>
-            </class>
-            <class name="com.tester.cases.DeleteBrandInfoTest" >
-                <methods>
-                    <include name="deleteBrand"/>
-                </methods>
-            </class>
+            <!--<class name="com.tester.cases.AddBrandTest" >-->
+                <!--<methods>-->
+                    <!--<include name="addBrand"/>-->
+                    <!--<include name="addExistBrandCode"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+            <!--<class name="com.tester.cases.GetBrandInfoListTest" >-->
+                <!--<methods>-->
+                    <!--<include name="getBrandListInfo"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+            <!--<class name="com.tester.cases.UpdateBrandInfoTest" >-->
+                <!--<methods>-->
+                    <!--<include name="updateBrandInfo"/>-->
+                <!--</methods>-->
+            <!--</class>-->
+            <!--<class name="com.tester.cases.DeleteBrandInfoTest" >-->
+                <!--<methods>-->
+                    <!--<include name="deleteBrand"/>-->
+                <!--</methods>-->
+            <!--</class>-->
         </classes>
 
     </test>
