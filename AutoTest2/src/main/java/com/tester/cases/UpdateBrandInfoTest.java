@@ -19,37 +19,37 @@ import java.util.Map;
 public class UpdateBrandInfoTest {
     final static LogControler Log = LogControler.getLogger(UpdateBrandInfoTest.class);
 
-    @Test(dependsOnGroups = "loginTrue",description = "¸ù¾İÆ·ÅÆid¸ü¸ÄÆ·ÅÆĞÅÏ¢")
+    @Test(dependsOnGroups = "loginTrue",description = "æ ¹æ®å“ç‰Œidæ›´æ”¹å“ç‰Œä¿¡æ¯")
     public void updateBrandInfo() throws IOException, InterruptedException {
         SqlSession session = DatabaseUtil.getSqlSession();
         UpdateBrandInfoCase updateBrandInfoCase = new UpdateBrandInfoCase();
         updateBrandInfoCase.setId(38915L);
         updateBrandInfoCase.setBrandCode("hzhzhuoshini111");
-        updateBrandInfoCase.setBrandName("×¿Ê«Äáhzh111");
+        updateBrandInfoCase.setBrandName("å“è¯—å°¼hzh111");
 
-        //»ñÈ¡ÇëÇóºóµÄ½á¹û
+        //è·å–è¯·æ±‚åçš„ç»“æœ
         int result = getResult(updateBrandInfoCase);
 
-        //»ñÈ¡¸üĞÂºóµÄ½á¹û£¨´ÓÊı¾İ¿â²éÕÒ£©
+        //è·å–æ›´æ–°åçš„ç»“æœï¼ˆä»æ•°æ®åº“æŸ¥æ‰¾ï¼‰
         Thread.sleep(2000);
         Brand brand = session.selectOne("getUpdateBrandInfo",updateBrandInfoCase);
         System.out.println(brand.toString());
-        //ÅĞ¶ÏÊı¾İ¿âÊÇ·ñÓĞĞŞ¸ÄºóµÄÕâ¸öÆ·ÅÆĞÅÏ¢
+        //åˆ¤æ–­æ•°æ®åº“æ˜¯å¦æœ‰ä¿®æ”¹åçš„è¿™ä¸ªå“ç‰Œä¿¡æ¯
         Assert.assertNotNull(brand);
-        //ÅĞ¶ÏÊÇ·ñÓĞĞŞ¸Ä³É¹¦£¬Èç¹û³É¹¦¾Í·µ»Ø1
+        //åˆ¤æ–­æ˜¯å¦æœ‰ä¿®æ”¹æˆåŠŸï¼Œå¦‚æœæˆåŠŸå°±è¿”å›1
         Assert.assertNotNull(result);
     }
 
 
     private int getResult(UpdateBrandInfoCase updateBrandInfoCase) throws IOException {
-        Log.info("ĞŞ¸ÄÆ·ÅÆÓÃÀı¿ªÊ¼Ö´ĞĞ=========");
+        Log.info("ä¿®æ”¹å“ç‰Œç”¨ä¾‹å¼€å§‹æ‰§è¡Œ=========");
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("content-type","application/json");
         headers.put("Authorization","Bearer "+TestConfig.Token);
         String result;
         Long brandId = updateBrandInfoCase.getId();
         HttpResponse response =HttpRequestUtil.getResponsePut(TestConfig.updateBrandInfoUrl,updateBrandInfoCase,brandId,headers);
-        //»ñÈ¡ÏìÓ¦½á¹û
+        //è·å–å“åº”ç»“æœ
         result = EntityUtils.toString(response.getEntity(),"utf-8");
         return Integer.parseInt(result);
     }
