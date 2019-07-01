@@ -52,7 +52,7 @@ public class LoginTest {
         //将返回的响应结果字符串转化成json对象
         //JSONObject resultJson = new JSONObject(result);
         JSONObject resultJson = JSON.parseObject(result);
-      //JSONObject jsonx = JSON.parseObject(resultJson.getString("info"));
+        //JSONObject jsonx = JSON.parseObject(resultJson.getString("info"));
         Log.info("执行JSON解析，解析的内容是 " + resultJson);
         //将获取到的token存储起来
         String token = (String) resultJson.get("access_token");
@@ -60,7 +60,7 @@ public class LoginTest {
         Log.info("token信息为" + token);
         Log.info("接口内容响应断言");
         //处理结果，就是判断返回结果是否符合预期
-       // Assert.assertEquals(loginCase.getExpected(),result);
+        // Assert.assertEquals(loginCase.getExpected(),result);
         Log.info("用例执行结束...");
 
     }

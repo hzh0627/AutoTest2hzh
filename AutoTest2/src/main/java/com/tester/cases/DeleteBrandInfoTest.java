@@ -29,7 +29,7 @@ public class DeleteBrandInfoTest {
         List<Long> lists = new ArrayList<Long>();
         //lists.add(38915L);
         lists.add(38916L);
-       // lists.add(38919L);
+        // lists.add(38919L);
         deleteBrandInfoCase.setIds(lists);
 
         //请求删除接口返回的结果
@@ -37,7 +37,7 @@ public class DeleteBrandInfoTest {
         //数据库查询出来的结果
         Thread.sleep(2000);
         Brand brand = session.selectOne("deleteBrandInfo",deleteBrandInfoCase);
-       // System.out.println(brand.toString());
+        // System.out.println(brand.toString());
 
         //
         Assert.assertNull(brand);
